@@ -1,0 +1,21 @@
+backend:
+  name: git-gateway
+  branch: main # Use 'master' if your main branch is named master
+
+media_folder: "public/images/uploads" # Where images you upload will go
+public_folder: "/images/uploads"
+
+# This removes the "Draft" step so changes go live immediately
+publish_mode: editorial_workflow
+
+collections:
+  - name: "content"
+    label: "Site Content"
+    files:
+      - label: "Portfolio Data"
+        name: "data"
+        file: "public/content.json" # This is the file we will create next
+        fields:
+          - {label: "Your Name", name: "name", widget: "string"}
+          - {label: "Headline", name: "headline", widget: "string"}
+          # We will add your specific project fields here later!
