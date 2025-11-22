@@ -1,21 +1,58 @@
 backend:
   name: git-gateway
-  branch: main # Use 'master' if your main branch is named master
+  branch: main
 
-media_folder: "public/images/uploads" # Where images you upload will go
+media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
-
-# This removes the "Draft" step so changes go live immediately
 publish_mode: editorial_workflow
 
 collections:
-  - name: "content"
-    label: "Site Content"
+  - name: "pages"
+    label: "Site Data"
     files:
-      - label: "Portfolio Data"
-        name: "data"
-        file: "public/content.json" # This is the file we will create next
+      - label: "Content & Projects"
+        name: "content"
+        file: "content.json" # <--- Notice this is just the file name now!
         fields:
-          - {label: "Your Name", name: "name", widget: "string"}
-          - {label: "Headline", name: "headline", widget: "string"}
-          # We will add your specific project fields here later!
+          - label: "Projects"
+            name: "projects"
+            widget: list
+            fields:
+              - {label: "ID (Number)", name: "id", widget: "number"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Category", name: "category", widget: "string"}
+              - {label: "Main Image", name: "image", widget: "image"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Year", name: "year", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+              - {label: "Client", name: "client", widget: "string"}
+              - {label: "Website URL", name: "website", widget: "string", required: false}
+              - {label: "Challenge", name: "challenge", widget: "text"}
+              - {label: "Solution", name: "solution", widget: "text"}
+              - {label: "Gallery Images", name: "gallery", widget: "list", field: {widget: "image"}}
+
+          - label: "Services"
+            name: "services"
+            widget: list
+            fields:
+              - {label: "ID", name: "id", widget: "string", default: "s1"}
+              - {label: "Display Number", name: "number", widget: "string", default: "01"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Tags", name: "tags", widget: "list"}
+
+          - label: "Strategy / Approach"
+            name: "approach_data"
+            widget: list
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Subtitle", name: "subtitle", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - {label: "Icon", name: "icon", widget: "select", options: ["Compass", "Layers", "Monitor", "BarChart3"]}
+
+          - label: "Skill Tags"
+            name: "skill_tags"
+            widget: list
+            fields:
+              - {label: "Name", name: "name", widget: "string"}
+              - {label: "Icon", name: "icon", widget: "select", options: ["Cloud", "Smartphone", "Cpu", "Lock"]}
