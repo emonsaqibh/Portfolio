@@ -2,27 +2,27 @@
   "approach_data": [
     {
       "icon": "Compass",
-      "title": "SERVICES",
-      "subtitle": "Strategy",
-      "description": "Comprehensive digital strategies designed to connect you with your ideal audience effortlessly. We pinpoint weaknesses in existing approaches."
+      "title": "INSIGHTS",
+      "subtitle": "Discovery",
+      "description": "Research-driven understanding of users, goals, and pain points to define a clear UX direction."
     },
     {
       "icon": "Layers",
-      "title": "TECHNOLOGY",
-      "subtitle": "Architecture",
-      "description": "Obtain tailored architectures for every product. Real-time adjustments in digital strategy driven by robust tech stacks."
+      "title": "CREATION",
+      "subtitle": "Design",
+      "description": "Crafting intuitive layouts, interfaces, and interactions supported by strong visual and UX principles."
     },
     {
       "icon": "Monitor",
-      "title": "DIFFERENCE",
-      "subtitle": "Execution",
-      "description": "We're more than just designers; we act as a part of your team, blending effortlessly to significantly enhance your product without adding workload."
+      "title": "REFINEMENT",
+      "subtitle": "Validation",
+      "description": "Testing prototypes, gathering feedback, and iterating to ensure the experience works flawlessly."
     },
     {
       "icon": "BarChart3",
-      "title": "ANALYTICS",
-      "subtitle": "Growth",
-      "description": "Data-driven design decisions ensuring that every pixel serves a purpose and contributes to the overall conversion and retention goals."
+      "title": "IMPLEMENTATION",
+      "subtitle": "Delivery",
+      "description": "Preparing polished, development-ready designs and systems for a smooth handoff and scalable growth."
     }
   ],
   "projects": [
@@ -139,6 +139,15 @@
     {
       "name": "Cybersecurity",
       "icon": "Lock"
+    }
+  ],
+  "resume_url": "/images/uploads/shakibulalamemonresume.pdf",
+  "work_history": [
+    {
+      "company": "Fringecore",
+      "role": "Product Manager",
+      "period": "2022-PRESENT",
+      "description": "Lead product vision, creative direction, and cross-functional collaboration across multiple enterprise and SaaS platforms.\nDesigned end-to-end UI/UX for ChainLink, an ERP system used to streamline organizational workflows and operational transparency.\nDefined product strategy and UX architecture for Product Sense, an AI-powered retail audit and brand performance intelligence platform.\nManaged roadmap and experience optimization for a Hospital Management System, improving clinical workflow efficiency and user accessibility.\nDesigned the digital news portal for Ekhon TV, enhancing content discoverability and engagement across web and mobile.\nCreated UI/UX for an LPG factory management and logistics platform, enabling real-time order processing, refill scheduling, delivery coordination,\nand tanker inventory control."
     }
   ]
 }
