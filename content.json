@@ -54,16 +54,16 @@
       "challenge": "Capturing every meaningful moment at an event is incredibly difficult. Hosts are busy, guests take photos on their own devices, and most of those memories never get shared. Important candid moments go unseen, group experiences stay scattered across phones, and you end up chasing people afterward just to collect the highlights.",
       "client": "Fringecore",
       "gallery": [
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1000&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1000&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop"
+        "/images/uploads/ec7gijnaufapsk8htnx7zzb9syg.webp",
+        "/images/uploads/pmsi48ndingjtwvcw6yurajdo.webp",
+        "/images/uploads/wawhpnmv3xirb76rpgvdavhcx4.avif"
       ],
       "role": "Lead Product Designer",
       "title": "GuestCamera",
       "solution": "Our platform makes it effortless for guests to contribute to a live, shared album, giving you all the behind-the-scenes memories you'd otherwise miss. From casual snaps to heartfelt videos, GuestCamera puts all your event photos in one place, so you can focus on making memories, not collecting them.",
       "website": "https://www.lilygpt.com",
       "id": 1,
-      "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
+      "image": "/images/uploads/fdajen5uzjymnvswuap3mktpye.webp",
       "description": "Don't miss a moment. Guestcamera is the simplest way to collect every photo and video from your event. With a single QR code, guests can instantly upload their candid shots to a shared gallery—no apps, accounts, or hassle required. Relive the celebration from every perspective in one central, beautiful album.",
       "year": "2024",
       "category": "Product Design"
