@@ -191,7 +191,7 @@ export const About: React.FC<AboutProps> = ({ onBack }) => {
             <div className="flex flex-col items-center gap-6 flex-shrink-0 mx-auto md:mx-0">
                 <div className="relative group">
                     <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white dark:border-[#222] shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" alt="Profile" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110" />
+                        <img src="https://github.com/emonsaqibh/Portfolio/blob/main/public/images/uploads/generated-image-september-09-2025-3_10am.png?raw=true" alt="Profile" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110" />
                     </div>
                     <motion.div 
                         initial={{ scale: 0, rotate: 10 }} animate={{ scale: 1, rotate: 0 }} transition={{ delay: 0.4, type: "spring" }}
