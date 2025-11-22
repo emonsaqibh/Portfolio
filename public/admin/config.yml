@@ -14,6 +14,23 @@ collections:
         name: "content"
         file: "content.json"
         fields:
+          # --- NEW GLOBAL SETTINGS ---
+          - label: "Global Site Settings"
+            name: "site_settings"
+            widget: "object"
+            fields:
+              - {label: "Website Name (Browser Title)", name: "name", widget: "string"}
+              - {label: "Logo Text (Top Left)", name: "logo_text", widget: "string"}
+              - {label: "Contact Email", name: "email", widget: "string"}
+              - {label: "Footer Copyright Text", name: "footer_text", widget: "string"}
+              - label: "Social Media Links"
+                name: "social_links"
+                widget: "list"
+                fields:
+                  - {label: "Platform Name", name: "name", widget: "string"}
+                  - {label: "URL", name: "url", widget: "string"}
+          # ---------------------------
+
           - label: "Projects"
             name: "projects"
             widget: list
