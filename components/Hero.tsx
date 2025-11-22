@@ -157,7 +157,7 @@ export const Hero: React.FC = () => {
                       <div className="relative w-full h-full bg-white dark:bg-gray-800 p-1 md:p-1.5 shadow-lg transform rotate-3 hover:rotate-0 transition-transform duration-500 ease-in-out cursor-pointer">
                         {/* Image */}
                         <img 
-                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop" 
+                            src="https://github.com/emonsaqibh/Portfolio/blob/main/public/images/uploads/generated-image-september-09-2025-3_10am.png?raw=true" 
                             alt="Emon Avatar" 
                             className="w-full h-full object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-500"
                         />
