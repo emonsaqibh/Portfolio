@@ -1,6 +1,8 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { ArrowUpRight, ArrowUp, Hand } from 'lucide-react';
 import { motion } from 'framer-motion';
+// IMPORT SETTINGS
+import { SITE_SETTINGS } from '../constants';
 
 const SmileyFace = () => (
   <svg 
@@ -111,12 +113,8 @@ export const Contact: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const socialLinks = [
-    { name: 'Instagram', url: '#' },
-    { name: 'Dribbble', url: '#' },
-    { name: 'LinkedIn', url: '#' },
-    { name: 'Contact', url: 'mailto:hello@lustra.studio' },
-  ];
+  // DYNAMIC LINKS FROM CMS
+  const socialLinks = SITE_SETTINGS.social_links;
 
   return (
     <section id="contact" className="relative bg-[#fafafa] dark:bg-[#0a0a0a] pt-24 md:pt-32 overflow-hidden flex flex-col justify-between min-h-[70vh] md:min-h-[80vh] transition-colors duration-300">
@@ -144,7 +142,7 @@ export const Contact: React.FC = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           className="flex flex-wrap justify-center gap-3 md:gap-4 mt-8 md:mt-12"
         >
-          {socialLinks.map((link, index) => (
+          {socialLinks.map((link: any, index: number) => (
             <a 
               key={index}
               href={link.url}
@@ -166,7 +164,8 @@ export const Contact: React.FC = () => {
       <div className="w-full border-t border-black/10 dark:border-white/10 bg-[#fafafa] dark:bg-[#0a0a0a] relative z-20 transition-colors duration-300">
         <div className="container mx-auto px-6 md:px-12 py-6 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] md:text-xs text-gray-500 uppercase tracking-widest text-center md:text-left">
           <div>
-            All rights reserved 2025 © Shakibul Alam Emon
+            {/* DYNAMIC FOOTER TEXT */}
+            {SITE_SETTINGS.footer_text}
           </div>
           
           <div className="flex items-center gap-6 md:gap-8">
