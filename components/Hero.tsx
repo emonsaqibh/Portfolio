@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Download, X, Send, Loader2, CheckCircle, Sparkles } from 'lucide-react';
+import { RESUME_URL } from '../constants'; // IMPORTED THE CMS LINK
 
 export const Hero: React.FC = () => {
   const { scrollY } = useScroll();
@@ -153,7 +154,7 @@ export const Hero: React.FC = () => {
                     transition={{ delay: 0.5, type: "spring", bounce: 0.4 }}
                     className="absolute top-[20%] left-[50%] -translate-x-1/2 w-24 h-24 md:top-[15%] md:left-[62%] md:w-[10vw] md:h-[10vw] md:max-w-[150px] md:max-h-[150px] z-10"
                 >
-                     <div className="relative w-full h-full bg-white dark:bg-gray-800 p-1 md:p-1.5 shadow-lg transform rotate-3 hover:rotate-0 transition-transform duration-500 ease-in-out cursor-pointer">
+                      <div className="relative w-full h-full bg-white dark:bg-gray-800 p-1 md:p-1.5 shadow-lg transform rotate-3 hover:rotate-0 transition-transform duration-500 ease-in-out cursor-pointer">
                         {/* Image */}
                         <img 
                             src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=300&auto=format&fit=crop" 
@@ -167,7 +168,7 @@ export const Hero: React.FC = () => {
                         <div className="absolute bottom-1 left-1 bg-black dark:bg-white text-white dark:text-black text-[8px] font-bold px-1.5 py-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
                             @emon.design
                         </div>
-                     </div>
+                      </div>
                 </motion.div>
 
                 {/* Stickers - Adjusted shadows for light mode */}
@@ -230,9 +231,11 @@ export const Hero: React.FC = () => {
                 Get Started <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </motion.button>
             
+            {/* CMS CONNECTED BUTTON */}
             <motion.a 
-                href="/resume.pdf"
-                download
+                href={RESUME_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, backgroundColor: "rgba(125,125,125,0.05)" }}
                 whileTap={{ scale: 0.95 }}
                 className="w-full sm:w-auto px-8 py-4 bg-transparent border border-black/10 dark:border-white/20 text-black dark:text-white rounded-full transition-colors font-medium text-base md:text-lg flex items-center justify-center gap-3 hover:border-black/30 dark:hover:border-white/50"
@@ -295,14 +298,14 @@ export const Hero: React.FC = () => {
                 {!isSuccess ? (
                   <div className="p-8 md:p-10 relative z-10">
                     <motion.div variants={itemVariants} className="mb-8">
-                         <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full text-[10px] uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-4">
-                            <Sparkles size={10} className="text-yellow-500 dark:text-yellow-400" />
-                            Start a Project
-                         </div>
-                        <h3 className="text-3xl md:text-4xl font-[Syne] font-bold mb-3 text-black dark:text-white leading-tight">
+                          <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-full text-[10px] uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-4">
+                             <Sparkles size={10} className="text-yellow-500 dark:text-yellow-400" />
+                             Start a Project
+                          </div>
+                         <h3 className="text-3xl md:text-4xl font-[Syne] font-bold mb-3 text-black dark:text-white leading-tight">
                             Let's build something<br/> <span className="text-gray-500">extraordinary.</span>
-                        </h3>
-                        <p className="text-gray-500 dark:text-gray-400 text-sm">Fill out the form below and I'll get back to you within 24 hours.</p>
+                         </h3>
+                         <p className="text-gray-500 dark:text-gray-400 text-sm">Fill out the form below and I'll get back to you within 24 hours.</p>
                     </motion.div>
                     
                     <form onSubmit={handleSubmit} className="space-y-5">
