@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, Download, Mail, Quote } from 'lucide-react';
+import { ArrowLeft, Download, Mail, Quote, Pause } from 'lucide-react';
 import { Contact } from './Contact';
 
 interface AboutProps {
@@ -9,294 +9,430 @@ interface AboutProps {
 
 const EXPERIENCE = [
   {
-    role: "Product Manager",
+    id: 1,
+    role: "Lead Product Designer",
     company: "Fringecore_",
-    period: "2020 - Current",
+    period: "2020 - Present",
+    description: "Spearheading the design system and product strategy for a next-gen fintech platform. Managing a team of 4 designers and bridging the gap between engineering and design to ensure pixel-perfect implementation."
   },
   {
-    role: "Senior UI/UX Designer",
-    company: "AD-IQ",
-    period: "2021 - 2022",
+    id: 2,
+    role: "Senior UX Designer",
+    company: "TechFlow Solutions",
+    period: "2018 - 2020",
+    description: "Redesigned the enterprise analytics dashboard, resulting in a 40% increase in user efficiency. Conducted extensive user research across 3 continents to validate new product features."
   },
   {
-    role: "UI/UX Designer",
-    company: "BanBase",
-    period: "2020 - 2021",
+    id: 3,
+    role: "UI Designer",
+    company: "Creative Pulse",
+    period: "2016 - 2018",
+    description: "Crafted pixel-perfect mobile interfaces and marketing websites for various startups in the SaaS and Lifestyle space. Specialized in micro-interactions and prototyping."
   }
 ];
 
 const TESTIMONIALS = [
   {
     id: 1,
-    name: "Sarah Mitchell",
-    role: "Creative Director at Studio X",
-    text: "Working with Shakibul was a game-changer. He understood our product vision instantly and delivered a clean, user-centered design that our customers love.",
-    avatar: "https://i.pravatar.cc/150?u=sarah"
+    name: "Sarah Jenkins",
+    role: "CTO at Fringecore",
+    text: "Emon's ability to translate complex technical requirements into intuitive, beautiful designs is unmatched.",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop",
+    bg: "bg-gradient-to-br from-neutral-900 via-black to-black"
   },
   {
     id: 2,
-    name: "James Carter",
-    role: "CEO at NexusPay",
-    text: "Exceptional attention to detail. The new dashboard design increased our user engagement by 40% within the first month of launch.",
-    avatar: "https://i.pravatar.cc/150?u=james"
+    name: "David Chen",
+    role: "Founder of EcoStream",
+    text: "Working with Emon was a game-changer. His strategic approach to design helped us secure our Series A funding.",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop",
+    bg: "bg-gradient-to-br from-zinc-900 via-black to-black"
   },
   {
     id: 3,
-    name: "Emily Chen",
-    role: "Product Lead at Flow",
-    text: "Shakibul bridges the gap between aesthetics and functionality perfectly. A true professional who delivers high-quality work on time.",
-    avatar: "https://i.pravatar.cc/150?u=emily"
+    name: "Emily Watson",
+    role: "VP Marketing at Lumina",
+    text: "Not just a designer, but a true problem solver. The brand identity he created captures our mission perfectly.",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop",
+    bg: "bg-gradient-to-br from-stone-900 via-black to-black"
+  },
+  {
+    id: 4,
+    name: "Michael Ross",
+    role: "Product Lead at Apex",
+    text: "Fast, efficient, and incredibly talented. Emon has a rare eye for detail and motion. Flawless deliverables.",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop",
+    bg: "bg-gradient-to-br from-slate-900 via-black to-black"
   }
 ];
 
-const STORY_DURATION = 5000; // 5 seconds per story
+const StoryViewer = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const DURATION = 5000; // 5 seconds per slide
+
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % TESTIMONIALS.length);
+  }, []);
+
+  const handlePrev = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  }, []);
+
+  const handleJump = useCallback((index: number) => {
+    setCurrentIndex(index);
+  }, []);
+
+  // Interactions
+  const handleTap = (e: React.MouseEvent<HTMLDivElement>) => {
+    // We don't want to trigger nav if we just finished a long press (pause)
+    // But simple logic: pause on down, resume on up/leave.
+    // If click happens, we navigate.
+    if (isPaused) {
+        setIsPaused(false);
+        // return; // Optional: if we want to prevent nav on lift after pause
+    }
+
+    const { clientX, currentTarget } = e;
+    const { left, width } = currentTarget.getBoundingClientRect();
+    const x = clientX - left;
+    
+    if (x < width * 0.3) {
+      handlePrev();
+    } else {
+      handleNext();
+    }
+  };
+
+  const handlePointerDown = () => setIsPaused(true);
+  const handlePointerLeave = () => setIsPaused(false);
+
+  return (
+    <div 
+      className="w-full mx-auto aspect-[9/16] md:aspect-[21/9] bg-black rounded-[2rem] md:rounded-[3rem] relative overflow-hidden shadow-2xl border border-white/10 group select-none transform transition-all duration-500 hover:shadow-[0_20px_80px_-20px_rgba(0,0,0,0.5)] ring-1 ring-black/10"
+      onPointerDown={handlePointerDown}
+      onPointerUp={handleTap}
+      onPointerLeave={handlePointerLeave}
+    >
+      {/* Background Layer */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          className={`absolute inset-0 ${TESTIMONIALS[currentIndex].bg}`}
+        />
+      </AnimatePresence>
+      
+      {/* Grain - Reduced opacity for performance */}
+      <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none mix-blend-overlay" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/60 pointer-events-none" />
+
+      {/* Progress Indicators - CSS Animation Based for Performance */}
+      <div className="absolute top-0 left-0 right-0 pt-6 px-6 md:pt-10 md:px-10 z-50 flex flex-col gap-2 pointer-events-none">
+          <div className="flex gap-2 w-full">
+            {TESTIMONIALS.map((_, idx) => (
+                <div 
+                    key={idx}
+                    className="relative h-1.5 flex-1 bg-white/20 rounded-full overflow-hidden cursor-pointer pointer-events-auto group transition-all duration-300 hover:h-2"
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        handleJump(idx);
+                    }}
+                >
+                    {/* Expanded Hit Area */}
+                    <div className="absolute -inset-y-4 inset-x-0 z-10" />
+
+                    {/* Completed Bars */}
+                    {idx < currentIndex && (
+                        <div className="absolute inset-0 bg-white" />
+                    )}
+
+                    {/* Active Bar with CSS Animation */}
+                    {idx === currentIndex && (
+                        <div 
+                            className="absolute top-0 left-0 h-full bg-white"
+                            style={{
+                                width: '0%',
+                                animation: `progress ${DURATION}ms linear forwards`,
+                                animationPlayState: isPaused ? 'paused' : 'running'
+                            }}
+                            onAnimationEnd={handleNext}
+                        />
+                    )}
+                </div>
+            ))}
+          </div>
+       </div>
+
+       <style>{`
+        @keyframes progress {
+            to { width: 100%; }
+        }
+       `}</style>
+
+      {/* Content Container */}
+      <div className="absolute inset-0 flex flex-col md:flex-row items-center md:items-end p-8 md:p-16 z-20 pointer-events-none gap-8 md:gap-16">
+         
+         {/* Quote Section */}
+         <div className="flex-1 flex flex-col justify-center h-full w-full">
+            <AnimatePresence mode="wait">
+               <motion.div
+                 key={currentIndex}
+                 initial={{ opacity: 0, y: 20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 exit={{ opacity: 0, y: -20 }}
+                 transition={{ duration: 0.4, ease: "circOut" }}
+                 className="relative"
+               >
+                 <Quote className="w-12 h-12 md:w-20 md:h-20 text-white/20 mb-4 md:mb-8" />
+                 <h3 className="text-2xl md:text-4xl lg:text-5xl font-[Syne] font-medium text-white leading-snug drop-shadow-lg">
+                   "{TESTIMONIALS[currentIndex].text}"
+                 </h3>
+               </motion.div>
+            </AnimatePresence>
+         </div>
+
+         {/* User Info */}
+         <div className="w-full md:w-auto flex md:flex-col items-center md:items-start gap-4 md:gap-6">
+            <motion.div 
+               key={`info-${currentIndex}`}
+               initial={{ opacity: 0, x: 10 }}
+               animate={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.4 }}
+               className="flex items-center gap-4 md:block"
+            >
+                <img 
+                    src={TESTIMONIALS[currentIndex].avatar} 
+                    alt={TESTIMONIALS[currentIndex].name} 
+                    className="w-12 h-12 md:w-20 md:h-20 rounded-full border-2 border-white/30 object-cover md:mb-4"
+                />
+                <div>
+                    <div className="text-white font-[Syne] font-bold text-base md:text-xl">
+                        {TESTIMONIALS[currentIndex].name}
+                    </div>
+                    <div className="text-white/60 text-xs md:text-sm uppercase tracking-widest font-mono">
+                        {TESTIMONIALS[currentIndex].role}
+                    </div>
+                </div>
+            </motion.div>
+         </div>
+      </div>
+
+      {/* "Paused" Indicator */}
+      <AnimatePresence>
+        {isPaused && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="absolute top-8 right-8 z-40 pointer-events-none"
+          >
+            <div className="bg-black/40 backdrop-blur-md w-10 h-10 rounded-full flex items-center justify-center border border-white/10">
+                 <Pause size={16} className="text-white fill-white" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Tap Zones */}
+      <div className="absolute inset-0 z-10 flex">
+         <div className="w-[30%] h-full cursor-w-resize" title="Previous" />
+         <div className="w-[40%] h-full cursor-pointer" />
+         <div className="w-[30%] h-full cursor-e-resize" title="Next" />
+      </div>
+    </div>
+  );
+};
 
 export const About: React.FC<AboutProps> = ({ onBack }) => {
-  const [currentStory, setCurrentStory] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentStory((prev) => (prev + 1) % TESTIMONIALS.length);
-    }, STORY_DURATION);
-
-    return () => clearInterval(timer);
-  }, [currentStory]); // Reset timer when story changes (auto or manual)
-
+  
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      className="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a] text-black dark:text-white pt-32 relative z-50 transition-colors duration-300"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a] relative z-50 transition-colors duration-300"
+      ref={containerRef}
     >
-       {/* Navigation Overlay */}
-       <div className="fixed top-0 left-0 w-full p-6 md:px-12 md:py-8 flex justify-between items-center z-50 bg-[#fafafa]/90 dark:bg-[#0a0a0a]/90 backdrop-blur-sm border-b border-black/5 dark:border-white/5 transition-colors">
+      {/* Navbar Overlay */}
+      <div className="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-50 mix-blend-difference pointer-events-none">
         <button 
           onClick={onBack}
-          className="flex items-center gap-2 text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors font-[Syne] uppercase tracking-widest text-sm"
+          className="flex items-center gap-2 text-white hover:text-gray-300 transition-colors font-[Syne] uppercase tracking-widest text-sm pointer-events-auto"
         >
           <ArrowLeft size={16} /> Back to Home
         </button>
-        <div className="text-black dark:text-white font-[Syne] font-bold hidden md:block">About Me</div>
       </div>
 
-      <div className="container mx-auto px-6 md:px-12 max-w-4xl">
-        
-        {/* Header / Profile Section */}
-        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start mb-24">
-          <motion.div 
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="relative"
-          >
-            <div className="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden border-2 border-black/10 dark:border-white/10">
-              <img 
-                src="https://picsum.photos/seed/shakibul/400/400" 
-                alt="Shakibul Alam Emon" 
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-              />
+      {/* Hero Section: Profile Card Layout */}
+      <div className="container mx-auto px-6 md:px-12 pt-32 md:pt-48 pb-20">
+        <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col md:flex-row items-start gap-12 md:gap-20 max-w-6xl"
+        >
+            {/* Image Block */}
+            <div className="flex flex-col items-center gap-6 flex-shrink-0 mx-auto md:mx-0">
+                <div className="relative group">
+                    <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white dark:border-[#222] shadow-2xl">
+                        <img 
+                            src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=800&auto=format&fit=crop" 
+                            alt="Profile" 
+                            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-110"
+                        />
+                    </div>
+                    {/* Est. Badge */}
+                    <motion.div 
+                        initial={{ scale: 0, rotate: 10 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ delay: 0.4, type: "spring" }}
+                        className="absolute bottom-1 right-1 md:bottom-2 md:right-2 bg-white text-black px-3 py-1 rounded-full font-bold text-[10px] md:text-xs font-[Syne] shadow-lg border border-black/5 z-20"
+                    >
+                        Est. 1998
+                    </motion.div>
+                </div>
+                
+                {/* Based in Dhaka Indicator */}
+                <div className="flex items-center gap-2 px-4 py-2 bg-white dark:bg-[#111] rounded-full border border-black/5 dark:border-white/10 shadow-sm">
+                    <div className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                    </div>
+                    <span className="text-xs font-medium text-gray-600 dark:text-gray-300 uppercase tracking-wide">Based in Dhaka</span>
+                </div>
             </div>
-            <div className="absolute -bottom-2 -right-2 bg-black dark:bg-white text-white dark:text-black text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-              Est. 1998
+
+            {/* Text Block */}
+            <div className="flex-1 pt-4 text-center md:text-left">
+                <h1 className="text-5xl md:text-7xl font-[Syne] font-bold text-black dark:text-white leading-none mb-4 tracking-tighter">
+                    Shakibul Alam<br />Emon
+                </h1>
+                <h2 className="text-lg md:text-xl text-gray-500 dark:text-gray-400 font-medium mb-8 uppercase tracking-wide">
+                    Product Designer & Strategist
+                </h2>
+
+                <div className="space-y-6 text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-2xl mx-auto md:mx-0">
+                    <p>
+                        I'm a multidisciplinary designer focusing on digital products, interactive experiences, and branding. My approach combines aesthetic precision with strategic thinking to build tools that are not just beautiful, but impactful.
+                    </p>
+                    <p>
+                        Based in Dhaka, I work with startups and established brands to define their digital future. When I'm not designing, I'm exploring new tech stacks or mentoring young designers.
+                    </p>
+                </div>
+
+                <div className="flex flex-wrap justify-center md:justify-start gap-4 mt-10">
+                    <a href="mailto:hello@lustra.studio" className="flex items-center gap-2 px-8 py-3 bg-black text-white dark:bg-white dark:text-black rounded-full font-bold text-sm uppercase tracking-wide hover:scale-105 transition-transform shadow-lg">
+                        <Mail size={18} /> Contact Me
+                    </a>
+                    <a href="/resume.pdf" download className="flex items-center gap-2 px-8 py-3 bg-transparent border border-black/20 dark:border-white/20 text-black dark:text-white rounded-full font-bold text-sm uppercase tracking-wide hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                        <Download size={18} /> Resume
+                    </a>
+                </div>
             </div>
-          </motion.div>
+        </motion.div>
+      </div>
 
-          <div className="flex-1">
-            <motion.h1 
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="text-4xl md:text-6xl font-[Syne] font-bold mb-2 text-black dark:text-white"
-            >
-              Shakibul Alam Emon
-            </motion.h1>
-            <motion.p 
-               initial={{ y: 20, opacity: 0 }}
-               animate={{ y: 0, opacity: 1 }}
-               transition={{ delay: 0.4 }}
-               className="text-xl text-gray-600 dark:text-gray-400 font-light mb-6"
-            >
-              Product Designer & Strategist
-            </motion.p>
-            
-            <motion.div 
-               initial={{ y: 20, opacity: 0 }}
-               animate={{ y: 0, opacity: 1 }}
-               transition={{ delay: 0.5 }}
-               className="prose prose-invert text-gray-600 dark:text-gray-400 leading-relaxed mb-8"
-            >
-              <p>
-                I’m a multidisciplinary designer focusing on digital products, interactive experiences, and branding. 
-                My approach combines aesthetic precision with strategic thinking to build tools that are not just beautiful, but impactful.
-              </p>
-              <p className="mt-4">
-                Based in Dhaka, I work with startups and established brands to define their digital future. When I'm not designing, I'm exploring new tech stacks or mentoring young designers.
-              </p>
-            </motion.div>
+      {/* Experience Timeline Section */}
+      <div className="bg-white dark:bg-[#0f0f0f] py-32 border-t border-black/5 dark:border-white/5">
+         <div className="container mx-auto px-6 md:px-12">
+            <div className="flex items-end justify-between mb-20">
+               <h2 className="text-4xl md:text-5xl font-[Syne] font-bold text-black dark:text-white">
+                 Work History
+               </h2>
+               <span className="hidden md:block text-xs font-mono uppercase tracking-widest text-gray-400">2016 — Present</span>
+            </div>
 
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.6 }}
-              className="flex gap-4"
-            >
-               <a href="mailto:hello@lustra.studio" className="px-6 py-2 bg-black text-white dark:bg-white dark:text-black rounded-full text-sm font-bold flex items-center gap-2 hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors">
-                 <Mail size={16} /> Contact Me
-               </a>
-               <a href="#" className="px-6 py-2 border border-black/20 dark:border-white/20 rounded-full text-sm font-medium flex items-center gap-2 hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-black dark:text-white">
-                 <Download size={16} /> Resume
-               </a>
-            </motion.div>
+            <div className="relative">
+               <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gray-200 dark:bg-white/10 -translate-x-1/2" />
+
+               <div className="space-y-12 md:space-y-24">
+                  {EXPERIENCE.map((job, index) => (
+                     <motion.div 
+                        key={job.id}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
+                        className={`flex flex-col md:flex-row items-start gap-8 md:gap-0 relative ${
+                           index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                        }`}
+                     >
+                        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-black dark:bg-white border-4 border-white dark:border-[#0f0f0f] shadow-sm z-10 mt-1.5" />
+                        
+                        <div className="md:hidden absolute left-0 top-2 bottom-0 w-px bg-gray-200 dark:bg-white/10" />
+                        <div className="md:hidden absolute left-[-4.5px] top-2 w-2.5 h-2.5 rounded-full bg-black dark:bg-white" />
+
+                        <div className={`w-full md:w-1/2 pl-6 md:pl-0 ${index % 2 === 0 ? 'md:pr-16 md:text-right' : 'md:pl-16 md:text-left'}`}>
+                           <span className="font-mono text-sm text-gray-500 uppercase tracking-widest bg-gray-100 dark:bg-white/5 px-3 py-1 rounded-md inline-block mb-2 md:mb-0">
+                              {job.period}
+                           </span>
+                        </div>
+
+                        <div className={`w-full md:w-1/2 pl-6 md:pl-0 ${index % 2 === 0 ? 'md:pl-16' : 'md:pr-16 md:text-right'}`}>
+                           <h3 className="text-2xl font-[Syne] font-bold text-black dark:text-white mb-1">
+                              {job.role}
+                           </h3>
+                           <div className="text-sm font-bold text-gray-400 mb-4 flex items-center gap-2 md:inline-flex">
+                              {job.company}
+                           </div>
+                           <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-sm md:text-base">
+                              {job.description}
+                           </p>
+                        </div>
+                     </motion.div>
+                  ))}
+               </div>
+            </div>
+         </div>
+      </div>
+
+      {/* Cinematic Story Testimonials Section */}
+      <div className="py-20 md:py-32 overflow-hidden bg-[#fafafa] dark:bg-[#0a0a0a]">
+        <div className="container mx-auto px-6 md:px-12">
+          <div className="flex flex-col gap-12">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-4">
+               <div>
+                  <h2 className="text-4xl md:text-6xl font-[Syne] font-bold text-black dark:text-white mb-4 leading-tight">
+                    Stories from<br/>
+                    <span className="text-gray-400">happy clients.</span>
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed max-w-md">
+                    Successful projects are built on trust. Here is what my partners have to say.
+                  </p>
+               </div>
+               
+               <div className="flex gap-8">
+                  <div>
+                    <div className="text-3xl font-[Syne] font-bold text-black dark:text-white mb-1">100%</div>
+                    <div className="text-xs uppercase tracking-widest text-gray-500">Job Success</div>
+                  </div>
+                  <div>
+                    <div className="text-3xl font-[Syne] font-bold text-black dark:text-white mb-1">45+</div>
+                    <div className="text-xs uppercase tracking-widest text-gray-500">Projects</div>
+                  </div>
+               </div>
+            </div>
+
+            {/* The Cinematic Story Viewer */}
+            <div className="w-full">
+               <StoryViewer />
+            </div>
           </div>
         </div>
-
-        {/* Timeline Section */}
-        <div className="border-t border-black/10 dark:border-white/10 pt-16 mb-32">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="flex flex-col mb-16"
-            >
-                <div className="w-full overflow-x-auto no-scrollbar pb-4">
-                    <div className="min-w-max">
-                        {/* Timeline Graphic */}
-                        <div className="flex items-center gap-8 md:gap-16 mb-4 relative pr-8">
-                           <div className="absolute top-1.5 left-0 w-full h-[1px] bg-black/10 dark:bg-white/10 -z-10" />
-                           
-                           <div className="relative">
-                              <div className="w-3 h-3 bg-indigo-500 rounded-full ring-4 ring-[#fafafa] dark:ring-[#0a0a0a]" />
-                           </div>
-                           {[1, 2, 3, 4, 5].map(i => (
-                              <div key={i} className="w-2 h-2 bg-gray-300 dark:bg-gray-800 rounded-full ring-4 ring-[#fafafa] dark:ring-[#0a0a0a]" />
-                           ))}
-                        </div>
-
-                        {/* Years */}
-                        <div className="flex items-baseline gap-8 md:gap-12 mb-8 pr-8">
-                           <span className="text-6xl md:text-7xl font-[Syne] font-bold text-black dark:text-white leading-none">2025</span>
-                           <div className="flex gap-6 text-gray-500 dark:text-gray-700 text-lg md:text-xl font-[Syne] select-none">
-                              <span>2024</span>
-                              <span>2023</span>
-                              <span>2022</span>
-                              <span>2021</span>
-                              <span>2020</span>
-                           </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="mb-8">
-                    <h3 className="text-2xl font-[Syne] mb-2 text-black dark:text-white">My journey through design</h3>
-                    <p className="text-gray-600 dark:text-gray-500 text-sm max-w-md">Explore the milestones and experiences that have shaped my career, year by year.</p>
-                </div>
-            </motion.div>
-
-            <div className="space-y-0">
-                {EXPERIENCE.map((exp, index) => (
-                    <motion.div 
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                        className="group grid grid-cols-1 md:grid-cols-12 gap-4 py-8 border-t border-gray-200 dark:border-gray-800 hover:border-black/30 dark:hover:border-white/30 transition-colors items-center"
-                    >
-                        <div className="md:col-span-5">
-                            <h4 className="text-xl font-medium text-gray-800 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">{exp.role}</h4>
-                        </div>
-                        <div className="md:col-span-4">
-                            <span className="text-gray-500 dark:text-gray-400 group-hover:text-black dark:group-hover:text-white transition-colors">{exp.company}</span>
-                        </div>
-                        <div className="md:col-span-3 text-right md:text-right">
-                            <span className="text-gray-400 dark:text-gray-500 font-mono text-sm group-hover:text-black dark:group-hover:text-white transition-colors">{exp.period}</span>
-                        </div>
-                    </motion.div>
-                ))}
-                <div className="border-t border-gray-200 dark:border-gray-800" />
-            </div>
-        </div>
       </div>
 
-      {/* Redesigned Testimonials Section - Open Layout */}
-      <section className="py-32 border-t border-black/10 dark:border-white/10 relative overflow-hidden transition-colors duration-300">
-        {/* Background Elements */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-200/30 dark:bg-blue-900/10 blur-[120px] rounded-full pointer-events-none mix-blend-multiply dark:mix-blend-screen" />
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-200/30 dark:bg-purple-900/10 blur-[120px] rounded-full pointer-events-none mix-blend-multiply dark:mix-blend-screen" />
-
-        <div className="container mx-auto px-6 md:px-12 relative z-10 max-w-4xl">
-            <div className="mb-20">
-                <h2 className="text-4xl md:text-7xl font-[Syne] font-medium mb-4 text-black dark:text-white">Trusted by</h2>
-                <p className="text-gray-600 dark:text-gray-500 text-lg">Visionaries and industry leaders.</p>
-            </div>
-
-            {/* Fixed Height Container for smooth transitions */}
-            <div className="relative h-[500px] md:h-[400px]">
-                {/* Giant Quote Mark */}
-                <Quote className="absolute -top-12 -left-4 md:-left-12 w-32 h-32 md:w-48 md:h-48 text-black/5 dark:text-white/5 rotate-180 pointer-events-none" />
-
-                <AnimatePresence initial={false}>
-                    <motion.div
-                        key={currentStory}
-                        initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                        exit={{ opacity: 0, y: -30, filter: "blur(10px)", pointerEvents: "none" }}
-                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="absolute top-0 left-0 w-full z-10"
-                    >
-                        <h3 className="text-2xl md:text-4xl lg:text-5xl font-[Syne] leading-tight md:leading-tight lg:leading-tight mb-12 text-black dark:text-gray-100">
-                            "{TESTIMONIALS[currentStory].text}"
-                        </h3>
-
-                        <div className="flex items-center gap-6">
-                            <div className="w-16 h-16 rounded-full overflow-hidden border border-black/10 dark:border-white/20 bg-gray-100 dark:bg-gray-800 relative group">
-                                <img 
-                                    src={TESTIMONIALS[currentStory].avatar} 
-                                    alt={TESTIMONIALS[currentStory].name} 
-                                    className="w-full h-full object-cover"
-                                />
-                            </div>
-                            <div>
-                                <div className="text-xl font-bold font-[Syne] text-black dark:text-white">{TESTIMONIALS[currentStory].name}</div>
-                                <div className="text-gray-500 text-sm uppercase tracking-wider">{TESTIMONIALS[currentStory].role}</div>
-                            </div>
-                        </div>
-                    </motion.div>
-                </AnimatePresence>
-
-                {/* Progress Indicators - Pinned to Bottom */}
-                <div className="absolute bottom-0 left-0 w-full max-w-xs flex gap-3">
-                    {TESTIMONIALS.map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setCurrentStory(index)}
-                            className="group relative h-1 flex-1 bg-black/10 dark:bg-white/10 rounded-full overflow-hidden transition-all py-2 bg-clip-content cursor-pointer outline-none"
-                            aria-label={`Go to testimonial ${index + 1}`}
-                        >
-                             {/* Background Track */}
-                             <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-0.5 bg-black/20 dark:bg-white/20 group-hover:bg-black/40 dark:group-hover:bg-white/40 transition-colors" />
-                             
-                             {/* Active Progress Fill */}
-                             <motion.div 
-                                 className="absolute top-1/2 -translate-y-1/2 left-0 h-0.5 bg-black dark:bg-white"
-                                 initial={{ width: "0%" }}
-                                 animate={{ width: index === currentStory ? "100%" : "0%" }}
-                                 transition={{ duration: index === currentStory ? STORY_DURATION / 1000 : 0.3, ease: "linear" }}
-                             />
-                        </button>
-                    ))}
-                </div>
-            </div>
-        </div>
-      </section>
-
-      {/* Contact Footer */}
+      {/* Footer Section */}
       <Contact />
+
     </motion.div>
   );
 };

@@ -24,7 +24,6 @@ const ServiceVisual = ({ id }: { id: string }) => {
       cp1: { x: 113, y: 140 },
       cp2: { x: 186, y: 40 },
       ease: "linear",
-      color: "#94a3b8" // slate-400
     },
     {
       name: "Ease In Out",
@@ -32,7 +31,6 @@ const ServiceVisual = ({ id }: { id: string }) => {
       cp1: { x: 160, y: 140 },
       cp2: { x: 140, y: 40 },
       ease: "easeInOut",
-      color: "#38bdf8" // sky-400
     },
     {
       name: "Elastic Snap",
@@ -40,11 +38,11 @@ const ServiceVisual = ({ id }: { id: string }) => {
       cp1: { x: 180, y: 140 },
       cp2: { x: 180, y: -30 },
       ease: [0.34, 1.56, 0.64, 1], // Custom cubic-bezier approximation for elastic
-      color: "#f97316" // orange-500
     }
   ];
 
   const currentMotion = motionConfigs[motionStep];
+  const CURVE_COLOR = "#f97316"; // Vibrant Orange for all curves
 
   return (
     <div className="w-full h-full flex items-center justify-center relative overflow-hidden bg-gray-50 dark:bg-[#050505] rounded-xl border border-black/5 dark:border-white/10 transition-colors duration-300">
@@ -233,13 +231,11 @@ const ServiceVisual = ({ id }: { id: string }) => {
                 <div className="absolute top-4 left-4 text-[10px] uppercase tracking-widest text-gray-400 font-mono">Preview</div>
                 
                 {/* Motion Track */}
-                <div className="w-full h-1 bg-gray-300 dark:bg-white/10 rounded-full relative">
-                     {/* Ghost Trails / Previous Positions visual cue could go here */}
-                     
+                <div className="w-full h-1 bg-gray-300 dark:bg-white/10 rounded-full relative overflow-visible">
                      {/* The Ball */}
                      <motion.div 
                         key={motionStep} // Forces reset on step change
-                        className="absolute top-1/2 -translate-y-1/2 -left-3 w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-br from-black to-gray-700 dark:from-white dark:to-gray-400 shadow-lg"
+                        className="absolute top-1/2 -translate-y-1/2 -left-3 w-6 h-6 md:w-8 md:h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-600 shadow-[0_0_20px_rgba(249,115,22,0.5)]"
                         initial={{ left: "0%" }}
                         animate={{ left: "100%" }}
                         transition={{ 
@@ -261,7 +257,7 @@ const ServiceVisual = ({ id }: { id: string }) => {
                         key={currentMotion.name}
                         initial={{ opacity: 0, y: 5 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="px-2 py-0.5 rounded bg-black/5 dark:bg-white/10 text-black dark:text-white font-bold"
+                        className="px-2 py-0.5 rounded bg-orange-500/10 text-orange-500 font-bold"
                     >
                         {currentMotion.name}
                     </motion.span>
@@ -287,27 +283,30 @@ const ServiceVisual = ({ id }: { id: string }) => {
                              initial={false}
                              animate={{ x1: 40, y1: 140, x2: currentMotion.cp1.x, y2: currentMotion.cp1.y }}
                              transition={{ duration: 0.6, ease: "easeInOut" }}
-                             className="stroke-gray-400 dark:stroke-gray-600"
+                             className="stroke-gray-300 dark:stroke-gray-700"
                              strokeWidth="1"
+                             strokeDasharray="4 4"
                         />
                         <motion.line 
                              initial={false}
                              animate={{ x1: 260, y1: 40, x2: currentMotion.cp2.x, y2: currentMotion.cp2.y }}
                              transition={{ duration: 0.6, ease: "easeInOut" }}
-                             className="stroke-gray-400 dark:stroke-gray-600"
+                             className="stroke-gray-300 dark:stroke-gray-700"
                              strokeWidth="1"
+                             strokeDasharray="4 4"
                         />
 
                         {/* The Bezier Curve */}
                         <motion.path 
                             d={currentMotion.d}
                             fill="none"
-                            stroke={currentMotion.color}
-                            strokeWidth="3"
+                            stroke={CURVE_COLOR}
+                            strokeWidth="4"
                             strokeLinecap="round"
                             initial={false}
-                            animate={{ d: currentMotion.d, stroke: currentMotion.color }}
+                            animate={{ d: currentMotion.d }}
                             transition={{ duration: 0.6, ease: "easeInOut" }}
+                            style={{ filter: 'drop-shadow(0 0 8px rgba(249,115,22,0.3))' }}
                         />
 
                         {/* Start Point */}

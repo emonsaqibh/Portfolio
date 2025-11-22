@@ -9,6 +9,8 @@ const SmileyFace = () => (
     fill="none" 
     stroke="currentColor" 
     strokeWidth="6"
+    width="80"
+    height="80"
   >
     <circle cx="50" cy="50" r="45" />
     {/* Eyes - Static */}
@@ -30,9 +32,9 @@ const AnimatedSticker: React.FC<AnimatedStickerProps> = ({ index, isSpecial }) =
 
   return (
     <motion.div
-      initial={{ y: 150, opacity: 0 }}
+      initial={{ y: 100, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, amount: 0.1 }}
       transition={{ 
         delay: index * 0.05, 
         type: "spring", 
@@ -56,7 +58,7 @@ const AnimatedSticker: React.FC<AnimatedStickerProps> = ({ index, isSpecial }) =
           }
         }}
         // Using CSS variables for dynamic framer motion values or classes
-        className="w-16 h-16 md:w-32 md:h-32 lg:w-40 lg:h-40 bg-white dark:bg-[#0a0a0a] rounded-full border-2 md:border-4 border-black dark:border-white text-black dark:text-white flex items-center justify-center cursor-pointer relative"
+        className="w-16 h-16 md:w-32 md:h-32 lg:w-40 lg:h-40 bg-white dark:bg-[#0a0a0a] rounded-full border-2 md:border-4 border-black dark:border-white text-black dark:text-white flex items-center justify-center cursor-pointer relative transition-colors"
         style={{
              // @ts-ignore
              '--sticker-bg': isSpecial ? '#FACC15' : '#fff', 
@@ -94,7 +96,7 @@ const StickerRow: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex overflow-x-clip overflow-y-visible pt-12 pb-4 px-4 w-full justify-center opacity-80 relative z-0 pointer-events-auto">
+    <div className="flex overflow-hidden pt-12 pb-4 px-4 w-full justify-center opacity-80 relative z-0 pointer-events-auto">
       <div className="flex min-w-max">
         {[...Array(20)].map((_, i) => (
           <AnimatedSticker key={i} index={i} isSpecial={i === specialIndex} />

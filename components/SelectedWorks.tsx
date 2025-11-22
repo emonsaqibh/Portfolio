@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PROJECTS } from '../constants';
-import { Plus, ArrowUpRight } from 'lucide-react';
+import { Plus, ArrowUpRight, ArrowRight } from 'lucide-react';
 import { Project } from '../types';
 
 interface SelectedWorksProps {
   onProjectClick?: (project: Project) => void;
+  onViewAll?: () => void;
 }
 
-export const SelectedWorks: React.FC<SelectedWorksProps> = ({ onProjectClick }) => {
+export const SelectedWorks: React.FC<SelectedWorksProps> = ({ onProjectClick, onViewAll }) => {
   const [activeProject, setActiveProject] = useState(0);
 
   const handleViewProject = () => {
@@ -20,11 +21,26 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({ onProjectClick }) 
   return (
     <section id="works" className="py-16 md:py-24 px-4 md:px-12 bg-[#fafafa] dark:bg-[#0a0a0a] transition-colors duration-300">
       <div className="container mx-auto">
-        <div className="mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-5xl font-[Syne] mb-4 text-black dark:text-white">Selected Works</h2>
-          <p className="text-gray-600 dark:text-gray-500 text-sm max-w-md">
-            Whether you're building a SaaS platform, launching a mobile app, or validating a new MVP — we're ready to help.
-          </p>
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 gap-8">
+          <div>
+            <h2 className="text-3xl md:text-5xl font-[Syne] mb-4 text-black dark:text-white">Selected Works</h2>
+            <p className="text-gray-600 dark:text-gray-500 text-sm max-w-md">
+              Whether you're building a SaaS platform, launching a mobile app, or validating a new MVP — we're ready to help.
+            </p>
+          </div>
+          
+          {/* Desktop View All Button */}
+          <div className="hidden md:block">
+             <button 
+                onClick={onViewAll}
+                className="group relative px-8 py-4 rounded-full border border-black/10 dark:border-white/10 overflow-hidden bg-transparent transition-colors"
+             >
+                <div className="absolute inset-0 translate-y-full group-hover:translate-y-0 bg-black dark:bg-white transition-transform duration-500 ease-[0.22,1,0.36,1]" />
+                <span className="relative z-10 flex items-center gap-2 font-bold uppercase tracking-wider text-sm text-black dark:text-white group-hover:text-white dark:group-hover:text-black transition-colors duration-300">
+                   See All Works <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </span>
+             </button>
+          </div>
         </div>
 
         <div className="flex flex-col lg:flex-row h-auto md:h-[600px] gap-6 md:gap-4">
@@ -99,6 +115,20 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({ onProjectClick }) 
             ))}
           </div>
         </div>
+
+        {/* Mobile View All Button */}
+        <div className="mt-8 md:hidden">
+            <button 
+            onClick={onViewAll}
+            className="w-full group relative px-8 py-4 rounded-full border border-black/10 dark:border-white/10 overflow-hidden bg-transparent transition-colors"
+            >
+            <div className="absolute inset-0 translate-y-full group-hover:translate-y-0 bg-black dark:bg-white transition-transform duration-500 ease-[0.22,1,0.36,1]" />
+            <span className="relative z-10 flex items-center justify-center gap-2 font-bold uppercase tracking-wider text-sm text-black dark:text-white group-hover:text-white dark:group-hover:text-black transition-colors duration-300">
+                See All Works <ArrowRight size={16} />
+            </span>
+            </button>
+        </div>
+
       </div>
     </section>
   );

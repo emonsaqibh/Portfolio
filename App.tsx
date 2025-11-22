@@ -7,12 +7,12 @@ import { Approach } from './components/Approach';
 import { SelectedWorks } from './components/SelectedWorks';
 import { Services } from './components/Services';
 import { Contact } from './components/Contact';
-import { AIChatbot } from './components/AIChatbot';
 import { ProjectDetails } from './components/ProjectDetails';
 import { About } from './components/About';
+import { Works } from './components/Works';
 import { Project } from './types';
 
-type ViewState = 'home' | 'about' | 'project';
+type ViewState = 'home' | 'about' | 'project' | 'works';
 type Theme = 'dark' | 'light';
 
 export default function App() {
@@ -124,12 +124,20 @@ export default function App() {
           <ProjectDetails 
             key="project-details" 
             project={selectedProject} 
-            onBack={() => handleNavigate('home')} 
+            onBack={() => setView('works')} 
           />
         )}
 
         {view === 'about' && (
           <About key="about-page" onBack={() => handleNavigate('home')} />
+        )}
+
+        {view === 'works' && (
+          <Works 
+            key="works-page" 
+            onBack={() => handleNavigate('home')} 
+            onProjectClick={handleProjectClick}
+          />
         )}
 
         {view === 'home' && (
@@ -138,15 +146,16 @@ export default function App() {
               <Hero />
               <Philosophy />
               <Approach />
-              <SelectedWorks onProjectClick={handleProjectClick} />
+              <SelectedWorks 
+                onProjectClick={handleProjectClick} 
+                onViewAll={() => setView('works')}
+              />
               <Services />
               <Contact />
             </main>
           </div>
         )}
       </AnimatePresence>
-      
-      <AIChatbot />
     </div>
   );
 }
