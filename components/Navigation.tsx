@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowRight, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+// IMPORT SETTINGS
+import { SITE_SETTINGS } from '../constants';
 
 interface NavigationProps {
   onNavigate: (view: 'home' | 'about') => void;
@@ -77,7 +79,8 @@ export const Navigation: React.FC<NavigationProps> = ({ onNavigate, theme, toggl
 
         <div className="container mx-auto px-6 md:px-12 flex justify-between items-center relative z-10">
           <button onClick={() => handleNavClick('home')} className="text-xl font-bold tracking-tighter uppercase font-[Syne] text-black dark:text-white z-[70] transition-colors">
-            Shakibul.
+            {/* DYNAMIC LOGO FROM CMS */}
+            {SITE_SETTINGS.logo_text}
           </button>
 
           {/* Desktop Menu */}
@@ -167,11 +170,12 @@ export const Navigation: React.FC<NavigationProps> = ({ onNavigate, theme, toggl
                className="mt-12 pt-12 border-t border-black/10 dark:border-white/10"
             >
                <button className="w-full py-4 bg-black text-white dark:bg-white dark:text-black rounded-full font-bold text-lg uppercase tracking-wide">
-                  Book a Call
+                 Book a Call
                </button>
                <div className="mt-8 flex justify-between text-gray-500 text-xs uppercase tracking-widest">
-                  <span>Dhaka, Bangladesh</span>
-                  <span>hello@lustra.studio</span>
+                 <span>Dhaka, Bangladesh</span>
+                 {/* DYNAMIC EMAIL FROM CMS */}
+                 <span>{SITE_SETTINGS.email}</span>
                </div>
             </motion.div>
           </motion.div>
