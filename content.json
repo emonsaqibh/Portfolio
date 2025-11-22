@@ -1,14 +1,26 @@
 {
   "site_settings": {
-    "name": "Shakibul Alam Emon",
-    "logo_text": "Shakibul.",
-    "email": "hello@lustra.studio",
+    "name": "Shakibul Alam Emon - Portfolio",
+    "logo_text": "Emon",
+    "email": "saqibemon@gmail.com",
     "footer_text": "All rights reserved 2025 © Shakibul Alam Emon",
     "social_links": [
-      { "name": "Instagram", "url": "#" },
-      { "name": "Dribbble", "url": "#" },
-      { "name": "LinkedIn", "url": "#" },
-      { "name": "Contact", "url": "mailto:hello@lustra.studio" }
+      {
+        "name": "Facebook",
+        "url": "https://www.facebook.com/emonsaqibh02"
+      },
+      {
+        "name": "Dribbble",
+        "url": "https://dribbble.com/saqibemon"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "http://www.linkedin.com/in/shakibulemon"
+      },
+      {
+        "name": "Email",
+        "url": "mailto:saqibemon@gmail.com"
+      }
     ]
   },
   "approach_data": [
@@ -39,56 +51,56 @@
   ],
   "projects": [
     {
-      "id": 1,
-      "title": "LilyGPT",
-      "category": "Product Design",
-      "description": "Meet Lily GPT, your personal AI news anchor. Lily sifts through endless headlines and complex articles to deliver concise, easy-to-understand news briefings tailored just for you.",
-      "year": "2024",
-      "role": "Lead Product Designer",
-      "client": "Fringecore",
-      "website": "https://www.lilygpt.com",
-      "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
       "challenge": "In the age of information overload, users are bombarded with cluttered feeds, clickbait headlines, and complex jargon. For the South Asian market specifically, finding a platform that seamlessly switches between local (Bengali) and international (English) content while offering a simplified, hands-free experience was non-existent.",
-      "solution": "We crafted LilyGPT as a dual-language, voice-first news assistant. The interface features a sleek 'Dark Mode' aesthetic to reduce eye strain. We designed a robust 'Interest Selector' (visualized in the gallery) allowing users to filter topics like Politics, Sports, and Religion. The core innovation is the 'Listening Mode', visualizing the AI's active state with a glowing orb, making news accessibility seamless for users on the go.",
+      "client": "Fringecore",
       "gallery": [
         "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1000&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1000&auto=format&fit=crop",
         "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop"
-      ]
+      ],
+      "role": "Lead Product Designer",
+      "title": "LilyGPT",
+      "solution": "We crafted LilyGPT as a dual-language, voice-first news assistant. The interface features a sleek 'Dark Mode' aesthetic to reduce eye strain. We designed a robust 'Interest Selector' (visualized in the gallery) allowing users to filter topics like Politics, Sports, and Religion. The core innovation is the 'Listening Mode', visualizing the AI's active state with a glowing orb, making news accessibility seamless for users on the go.",
+      "website": "https://www.lilygpt.com",
+      "id": 1,
+      "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
+      "description": "Meet Lily GPT, your personal AI news anchor. Lily sifts through endless headlines and complex articles to deliver concise, easy-to-understand news briefings tailored just for you.",
+      "year": "2024",
+      "category": "Product Design"
     },
     {
-      "id": 2,
-      "title": "EcoStream SaaS",
-      "category": "User Experience",
-      "description": "A comprehensive dashboard for monitoring environmental impact and carbon footprints.",
-      "year": "2023",
-      "role": "UX Researcher & UI Designer",
-      "client": "GreenTech Solutions",
-      "image": "https://picsum.photos/seed/eco/800/1000",
       "challenge": "Industrial clients struggled to make sense of the massive amounts of sensor data related to carbon emissions. The existing tools were clunky and required data scientist level knowledge to operate.",
-      "solution": "We created 'EcoStream', a dashboard that synthesizes complex data into actionable insights. Using a modular card system and predictive analytics visualization, facility managers can now identify leaks and inefficiencies in real-time.",
+      "client": "GreenTech Solutions",
       "gallery": [
         "https://picsum.photos/seed/eco1/1200/800",
         "https://picsum.photos/seed/eco2/1200/800",
         "https://picsum.photos/seed/eco3/1200/800"
-      ]
+      ],
+      "role": "UX Researcher & UI Designer",
+      "title": "EcoStream SaaS",
+      "solution": "We created 'EcoStream', a dashboard that synthesizes complex data into actionable insights. Using a modular card system and predictive analytics visualization, facility managers can now identify leaks and inefficiencies in real-time.",
+      "id": 2,
+      "image": "https://picsum.photos/seed/eco/800/1000",
+      "description": "A comprehensive dashboard for monitoring environmental impact and carbon footprints.",
+      "year": "2023",
+      "category": "User Experience"
     },
     {
-      "id": 3,
-      "title": "Lumina Health",
-      "category": "Brand Identity",
-      "description": "Connecting patients with specialists through an intuitive and calming interface.",
-      "year": "2023",
-      "role": "Brand Strategist",
-      "client": "Lumina",
-      "image": "https://picsum.photos/seed/health/800/1000",
       "challenge": "Healthcare apps often feel sterile and clinical, causing anxiety for patients. Lumina needed a brand identity that conveyed trust, warmth, and professional competence.",
-      "solution": "We developed a soft, gradients-based visual language paired with a rounded sans-serif typography to create a sense of calm. The logo symbol combines a cross (health) with a spark (hope), representing the brand's mission to illuminate the path to recovery.",
+      "client": "Lumina",
       "gallery": [
         "https://picsum.photos/seed/lumina1/1200/800",
         "https://picsum.photos/seed/lumina2/1200/800",
         "https://picsum.photos/seed/lumina3/1200/800"
-      ]
+      ],
+      "role": "Brand Strategist",
+      "title": "Lumina Health",
+      "solution": "We developed a soft, gradients-based visual language paired with a rounded sans-serif typography to create a sense of calm. The logo symbol combines a cross (health) with a spark (hope), representing the brand's mission to illuminate the path to recovery.",
+      "id": 3,
+      "image": "https://picsum.photos/seed/health/800/1000",
+      "description": "Connecting patients with specialists through an intuitive and calming interface.",
+      "year": "2023",
+      "category": "Brand Identity"
     }
   ],
   "services": [
@@ -97,35 +109,63 @@
       "number": "01",
       "title": "Product Design",
       "description": "End-to-end digital product design from concept to high-fidelity prototypes. We focus on creating intuitive interfaces that solve real user problems while looking stunning.",
-      "tags": ["UI Design", "Prototyping", "Design Systems"]
+      "tags": [
+        "UI Design",
+        "Prototyping",
+        "Design Systems"
+      ]
     },
     {
       "id": "s2",
       "number": "02",
       "title": "Brand Identity",
       "description": "Crafting distinct visual languages that tell your story. From logo design to comprehensive brand guidelines, we ensure your brand stands out in a crowded market.",
-      "tags": ["Logo Design", "Visual Language", "Guidelines"]
+      "tags": [
+        "Logo Design",
+        "Visual Language",
+        "Guidelines"
+      ]
     },
     {
       "id": "s3",
       "number": "03",
       "title": "Motion Graphics",
       "description": "Adding dimension to your digital presence. We create smooth micro-interactions and compelling narrative animations that guide users and delight the senses.",
-      "tags": ["Interaction Design", "Lottie", "After Effects"]
+      "tags": [
+        "Interaction Design",
+        "Lottie",
+        "After Effects"
+      ]
     },
     {
       "id": "s4",
       "number": "04",
       "title": "User Experience",
       "description": "Research-backed design decisions. We map out user journeys, conduct usability testing, and optimize flows to ensure friction-less experiences.",
-      "tags": ["User Research", "Wireframing", "Usability Testing"]
+      "tags": [
+        "User Research",
+        "Wireframing",
+        "Usability Testing"
+      ]
     }
   ],
   "skill_tags": [
-    { "name": "SaaS", "icon": "Cloud" },
-    { "name": "eCommerce", "icon": "Smartphone" },
-    { "name": "AI Solutions", "icon": "Cpu" },
-    { "name": "Cybersecurity", "icon": "Lock" }
+    {
+      "name": "SaaS",
+      "icon": "Cloud"
+    },
+    {
+      "name": "eCommerce",
+      "icon": "Smartphone"
+    },
+    {
+      "name": "AI Solutions",
+      "icon": "Cpu"
+    },
+    {
+      "name": "Cybersecurity",
+      "icon": "Lock"
+    }
   ],
   "work_history": [
     {
