@@ -31,7 +31,6 @@ collections:
               - {label: "Solution", name: "solution", widget: "text"}
               - {label: "Gallery Images", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
 
-          # --- NEW SECTION STARTS HERE ---
           - label: "Work History"
             name: "work_history"
             widget: list
@@ -45,7 +44,24 @@ collections:
             name: "resume_url"
             widget: "file"
             required: false
-          # --- NEW SECTION ENDS HERE ---
+
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: list
+            fields:
+              - {label: "Client Name", name: "name", widget: "string"}
+              - {label: "Role", name: "role", widget: "string"}
+              - {label: "Quote", name: "text", widget: "text"}
+              - {label: "Avatar Image", name: "avatar", widget: "image"}
+              - label: "Color Theme"
+                name: "bg"
+                widget: "select"
+                options: 
+                  - {label: "Neutral Black", value: "bg-gradient-to-br from-neutral-900 via-black to-black"}
+                  - {label: "Zinc Black", value: "bg-gradient-to-br from-zinc-900 via-black to-black"}
+                  - {label: "Stone Black", value: "bg-gradient-to-br from-stone-900 via-black to-black"}
+                  - {label: "Slate Black", value: "bg-gradient-to-br from-slate-900 via-black to-black"}
+                  - {label: "Purple Tint", value: "bg-gradient-to-br from-purple-900/50 via-black to-black"}
 
           - label: "Services"
             name: "services"
