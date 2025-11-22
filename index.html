@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shakibul Alam Emon | Product Designer</title>
+    
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -60,7 +63,7 @@
       }
       
       html {
-        scroll-padding-top: 100px; /* Offset for sticky header */
+        scroll-padding-top: 100px;
       }
       body {
         font-family: 'Inter', sans-serif;
@@ -86,7 +89,6 @@
         -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
         color: transparent;
       }
-      /* Light mode outline support */
       .light .text-outline {
         -webkit-text-stroke: 1px rgba(0, 0, 0, 0.3);
         color: transparent;
@@ -98,8 +100,6 @@
         -ms-overflow-style: none;
         scrollbar-width: none;
       }
-
-      /* View Transition API Styles for Circular Reveal */
       ::view-transition-old(root),
       ::view-transition-new(root) {
         animation: none;
