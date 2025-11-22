@@ -29,8 +29,23 @@ collections:
               - {label: "Website URL", name: "website", widget: "string", required: false}
               - {label: "Challenge", name: "challenge", widget: "text"}
               - {label: "Solution", name: "solution", widget: "text"}
-              # FIXED LINE BELOW: Added 'name' and 'label' to the nested field
               - {label: "Gallery Images", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
+
+          # --- NEW SECTION STARTS HERE ---
+          - label: "Work History"
+            name: "work_history"
+            widget: list
+            fields:
+              - {label: "Company Name", name: "company", widget: "string"}
+              - {label: "Job Title", name: "role", widget: "string"}
+              - {label: "Period (e.g. 2024 - Present)", name: "period", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+
+          - label: "Resume File (PDF)"
+            name: "resume_url"
+            widget: "file"
+            required: false
+          # --- NEW SECTION ENDS HERE ---
 
           - label: "Services"
             name: "services"
