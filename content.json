@@ -69,21 +69,21 @@
       "category": "Product Design"
     },
     {
-      "challenge": "Industrial clients struggled to make sense of the massive amounts of sensor data related to carbon emissions. The existing tools were clunky and required data scientist level knowledge to operate.",
-      "client": "GreenTech Solutions",
+      "challenge": "Built a user-friendly UI for Fleet that simplifies property discovery and booking. The design balances aesthetic appeal with functional clarity, offering users a smooth journey from search to stay.",
+      "client": "Fleet",
       "gallery": [
-        "https://picsum.photos/seed/eco1/1200/800",
-        "https://picsum.photos/seed/eco2/1200/800",
+        "/images/uploads/lqcu1joeqibu3qczj4lcvnlbw6k.webp",
+        "/images/uploads/0qmbcxxp3csisneklwcyjed5ikm.webp",
         "https://picsum.photos/seed/eco3/1200/800"
       ],
       "role": "UX Researcher & UI Designer",
-      "title": "EcoStream SaaS",
-      "solution": "We created 'EcoStream', a dashboard that synthesizes complex data into actionable insights. Using a modular card system and predictive analytics visualization, facility managers can now identify leaks and inefficiencies in real-time.",
+      "title": "Fleet",
+      "solution": "Designed a clean and intuitive interface for Fleet, a rental platform connecting travelers with unique stays. Focused on seamless navigation, bold visuals, and frictionless booking to elevate the travel experience.",
       "id": 2,
-      "image": "https://picsum.photos/seed/eco/800/1000",
-      "description": "A comprehensive dashboard for monitoring environmental impact and carbon footprints.",
-      "year": "2023",
-      "category": "User Experience"
+      "image": "/images/uploads/rsxfteuznifohmomfwasivvkmws.avif",
+      "description": "Designed a clean and intuitive interface for Fleet, a rental platform connecting travelers with unique stays. Focused on seamless navigation, bold visuals, and frictionless booking to elevate the travel experience.",
+      "year": "2022",
+      "category": "Product Design"
     },
     {
       "challenge": "Healthcare apps often feel sterile and clinical, causing anxiety for patients. Lumina needed a brand identity that conveyed trust, warmth, and professional competence.",
@@ -97,7 +97,7 @@
       "title": "Lumina Health",
       "solution": "We developed a soft, gradients-based visual language paired with a rounded sans-serif typography to create a sense of calm. The logo symbol combines a cross (health) with a spark (hope), representing the brand's mission to illuminate the path to recovery.",
       "id": 3,
-      "image": "https://picsum.photos/seed/health/800/1000",
+      "image": "/images/uploads/ltqnxsrq0nbh7hnf9qopqe0tkgg.webp",
       "description": "Connecting patients with specialists through an intuitive and calming interface.",
       "year": "2023",
       "category": "Brand Identity"
