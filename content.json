@@ -26,81 +26,82 @@
   "approach_data": [
     {
       "icon": "Compass",
-      "title": "SERVICES",
-      "subtitle": "Strategy",
-      "description": "Comprehensive digital strategies designed to connect you with your ideal audience effortlessly. We pinpoint weaknesses in existing approaches."
+      "title": "INSIGHTS",
+      "subtitle": "Discovery",
+      "description": "Research-driven understanding of users, goals, and pain points to define a clear UX direction."
     },
     {
       "icon": "Layers",
-      "title": "TECHNOLOGY",
-      "subtitle": "Architecture",
-      "description": "Obtain tailored architectures for every product. Real-time adjustments in digital strategy driven by robust tech stacks."
+      "title": "CREATION",
+      "subtitle": "Design",
+      "description": "Crafting intuitive layouts, interfaces, and interactions supported by strong visual and UX principles."
     },
     {
       "icon": "Monitor",
-      "title": "DIFFERENCE",
-      "subtitle": "Execution",
-      "description": "We're more than just designers; we act as a part of your team, blending effortlessly to significantly enhance your product without adding workload."
+      "title": "REFINEMENT",
+      "subtitle": "Validation",
+      "description": "Testing prototypes, gathering feedback, and iterating to ensure the experience works flawlessly."
     },
     {
       "icon": "BarChart3",
-      "title": "ANALYTICS",
-      "subtitle": "Growth",
-      "description": "Data-driven design decisions ensuring that every pixel serves a purpose and contributes to the overall conversion and retention goals."
+      "title": "IMPLEMENTATION",
+      "subtitle": "Delivery",
+      "description": "Preparing polished, development-ready designs and systems for a smooth handoff and scalable growth."
     }
   ],
   "projects": [
     {
-      "challenge": "In the age of information overload, users are bombarded with cluttered feeds, clickbait headlines, and complex jargon. For the South Asian market specifically, finding a platform that seamlessly switches between local (Bengali) and international (English) content while offering a simplified, hands-free experience was non-existent.",
+      "challenge": "Capturing every meaningful moment at an event is incredibly difficult. Hosts are busy, guests take photos on their own devices, and most of those memories never get shared. Important candid moments go unseen, group experiences stay scattered across phones, and you end up chasing people afterward just to collect the highlights.",
       "client": "Fringecore",
       "gallery": [
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=1000&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1551650975-87deedd944c3?q=80&w=1000&auto=format&fit=crop",
-        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1000&auto=format&fit=crop"
+        "/images/uploads/ec7gijnaufapsk8htnx7zzb9syg.webp",
+        "/images/uploads/pmsi48ndingjtwvcw6yurajdo.webp",
+        "/images/uploads/wawhpnmv3xirb76rpgvdavhcx4.avif"
       ],
       "role": "Lead Product Designer",
-      "title": "LilyGPT",
-      "solution": "We crafted LilyGPT as a dual-language, voice-first news assistant. The interface features a sleek 'Dark Mode' aesthetic to reduce eye strain. We designed a robust 'Interest Selector' (visualized in the gallery) allowing users to filter topics like Politics, Sports, and Religion. The core innovation is the 'Listening Mode', visualizing the AI's active state with a glowing orb, making news accessibility seamless for users on the go.",
+      "title": "GuestCamera",
+      "solution": "Our platform makes it effortless for guests to contribute to a live, shared album, giving you all the behind-the-scenes memories you'd otherwise miss. From casual snaps to heartfelt videos, GuestCamera puts all your event photos in one place, so you can focus on making memories, not collecting them.",
       "website": "https://www.lilygpt.com",
       "id": 1,
-      "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
-      "description": "Meet Lily GPT, your personal AI news anchor. Lily sifts through endless headlines and complex articles to deliver concise, easy-to-understand news briefings tailored just for you.",
+      "image": "/images/uploads/fdajen5uzjymnvswuap3mktpye.webp",
+      "description": "Don't miss a moment. Guestcamera is the simplest way to collect every photo and video from your event. With a single QR code, guests can instantly upload their candid shots to a shared gallery—no apps, accounts, or hassle required. Relive the celebration from every perspective in one central, beautiful album.",
       "year": "2024",
       "category": "Product Design"
     },
     {
-      "challenge": "Industrial clients struggled to make sense of the massive amounts of sensor data related to carbon emissions. The existing tools were clunky and required data scientist level knowledge to operate.",
-      "client": "GreenTech Solutions",
+      "challenge": "Built a user-friendly UI for Fleet that simplifies property discovery and booking. The design balances aesthetic appeal with functional clarity, offering users a smooth journey from search to stay.",
+      "client": "Fleet",
       "gallery": [
-        "https://picsum.photos/seed/eco1/1200/800",
-        "https://picsum.photos/seed/eco2/1200/800",
-        "https://picsum.photos/seed/eco3/1200/800"
+        "/images/uploads/lqcu1joeqibu3qczj4lcvnlbw6k.webp",
+        "/images/uploads/0qmbcxxp3csisneklwcyjed5ikm.webp",
+        "/images/uploads/ltqnxsrq0nbh7hnf9qopqe0tkgg.webp"
       ],
       "role": "UX Researcher & UI Designer",
-      "title": "EcoStream SaaS",
-      "solution": "We created 'EcoStream', a dashboard that synthesizes complex data into actionable insights. Using a modular card system and predictive analytics visualization, facility managers can now identify leaks and inefficiencies in real-time.",
+      "title": "Fleet",
+      "solution": "Designed a clean and intuitive interface for Fleet, a rental platform connecting travelers with unique stays. Focused on seamless navigation, bold visuals, and frictionless booking to elevate the travel experience.",
       "id": 2,
-      "image": "https://picsum.photos/seed/eco/800/1000",
-      "description": "A comprehensive dashboard for monitoring environmental impact and carbon footprints.",
-      "year": "2023",
-      "category": "User Experience"
+      "image": "/images/uploads/rsxfteuznifohmomfwasivvkmws.avif",
+      "description": "Designed a clean and intuitive interface for Fleet, a rental platform connecting travelers with unique stays. Focused on seamless navigation, bold visuals, and frictionless booking to elevate the travel experience.",
+      "year": "2022",
+      "category": "Product Design"
     },
     {
-      "challenge": "Healthcare apps often feel sterile and clinical, causing anxiety for patients. Lumina needed a brand identity that conveyed trust, warmth, and professional competence.",
-      "client": "Lumina",
+      "challenge": "Creating an intuitive and modern fintech app that has subtle animation which can hook users and give them a smooth experience.",
+      "client": "TechLogi",
       "gallery": [
-        "https://picsum.photos/seed/lumina1/1200/800",
-        "https://picsum.photos/seed/lumina2/1200/800",
-        "https://picsum.photos/seed/lumina3/1200/800"
+        "/images/uploads/zxqthbdmh5snp8zt932ixc4mf1c.avif",
+        "/images/uploads/nrggobhysaxliklr8hkvw11odg.webp",
+        "/images/uploads/kp3w9ofusag8z1fck2qsy8mrfw.webp",
+        "/images/uploads/hid5oi1mbv9mbunh85x29sqifca.webp"
       ],
-      "role": "Brand Strategist",
-      "title": "Lumina Health",
-      "solution": "We developed a soft, gradients-based visual language paired with a rounded sans-serif typography to create a sense of calm. The logo symbol combines a cross (health) with a spark (hope), representing the brand's mission to illuminate the path to recovery.",
+      "role": "Product Designer",
+      "title": "Fintech App",
+      "solution": "The clean, intuitive interface prioritizes ease of use, allowing users to effortlessly track spending, set budgets, and manage investments. A visually engaging dashboard provides a real-time overview of financial health, while personalized insights and alerts empower users to make smarter financial decisions.",
       "id": 3,
-      "image": "https://picsum.photos/seed/health/800/1000",
-      "description": "Connecting patients with specialists through an intuitive and calming interface.",
-      "year": "2023",
-      "category": "Brand Identity"
+      "image": "/images/uploads/ltqnxsrq0nbh7hnf9qopqe0tkgg.webp",
+      "description": "The clean, intuitive interface prioritizes ease of use, allowing users to effortlessly track spending, set budgets, and manage investments. A visually engaging dashboard provides a real-time overview of financial health, while personalized insights and alerts empower users to make smarter financial decisions.",
+      "year": "2025",
+      "category": "Product Design"
     }
   ],
   "services": [
@@ -170,18 +171,18 @@
   "work_history": [
     {
       "company": "Fringecore",
-      "role": "Lead Product Designer",
-      "period": "2024 - Present",
-      "description": "Leading the product design team to deliver AI-driven solutions."
+      "role": "Product Manager",
+      "period": "2022 - Present",
+      "description": "Lead product vision, creative direction, and cross-functional collaboration across multiple enterprise and SaaS platforms.\nDesigned end-to-end UI/UX for ChainLink, an ERP system used to streamline organizational workflows and operational transparency.\nDefined product strategy and UX architecture for Product Sense, an AI-powered retail audit and brand performance intelligence platform.\nManaged roadmap and experience optimization for a Hospital Management System, improving clinical workflow efficiency and user accessibility.\nDesigned the digital news portal for Ekhon TV, enhancing content discoverability and engagement across web and mobile.\nCreated UI/UX for an LPG factory management and logistics platform, enabling real-time order processing, refill scheduling, delivery coordination,\nand tanker inventory control.\n"
     },
     {
-      "company": "GreenTech Solutions",
-      "role": "UX Researcher",
-      "period": "2023 - 2024",
-      "description": "Conducted in-depth user research for industrial carbon monitoring tools."
+      "company": "Ban Base",
+      "role": "Creative Designer",
+      "period": "2021 - 2022",
+      "description": "Created branding and visual identity assets for multiple client projects.\nDesigned daily social media graphics and creative marketing visuals.\nProduced intuitive, engaging motion graphics and animated content for campaigns.\nDeveloped explainer videos and product storytelling visuals.\nDesigned landing pages with a focus on clarity, usability, and conversion-driven layouts."
     }
   ],
-  "resume_url": "",
+  "resume_url": "/images/uploads/shakibulalamemonresume.pdf",
   "testimonials": [
     {
       "id": 1,
