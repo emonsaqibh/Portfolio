@@ -2,34 +2,12 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeft, Download, Mail, Quote, Pause } from 'lucide-react';
 import { Contact } from './Contact';
+// IMPORT THE CMS DATA
+import { WORK_HISTORY, RESUME_URL } from '../constants';
 
 interface AboutProps {
   onBack: () => void;
 }
-
-const EXPERIENCE = [
-  {
-    id: 1,
-    role: "Lead Product Designer",
-    company: "Fringecore_",
-    period: "2020 - Present",
-    description: "Spearheading the design system and product strategy for a next-gen fintech platform. Managing a team of 4 designers and bridging the gap between engineering and design to ensure pixel-perfect implementation."
-  },
-  {
-    id: 2,
-    role: "Senior UX Designer",
-    company: "TechFlow Solutions",
-    period: "2018 - 2020",
-    description: "Redesigned the enterprise analytics dashboard, resulting in a 40% increase in user efficiency. Conducted extensive user research across 3 continents to validate new product features."
-  },
-  {
-    id: 3,
-    role: "UI Designer",
-    company: "Creative Pulse",
-    period: "2016 - 2018",
-    description: "Crafted pixel-perfect mobile interfaces and marketing websites for various startups in the SaaS and Lifestyle space. Specialized in micro-interactions and prototyping."
-  }
-];
 
 const TESTIMONIALS = [
   {
@@ -85,12 +63,8 @@ const StoryViewer = () => {
 
   // Interactions
   const handleTap = (e: React.MouseEvent<HTMLDivElement>) => {
-    // We don't want to trigger nav if we just finished a long press (pause)
-    // But simple logic: pause on down, resume on up/leave.
-    // If click happens, we navigate.
     if (isPaused) {
         setIsPaused(false);
-        // return; // Optional: if we want to prevent nav on lift after pause
     }
 
     const { clientX, currentTarget } = e;
@@ -175,50 +149,50 @@ const StoryViewer = () => {
 
       {/* Content Container */}
       <div className="absolute inset-0 flex flex-col md:flex-row items-center md:items-end p-8 md:p-16 z-20 pointer-events-none gap-8 md:gap-16">
-         
-         {/* Quote Section */}
-         <div className="flex-1 flex flex-col justify-center h-full w-full">
-            <AnimatePresence mode="wait">
-               <motion.div
-                 key={currentIndex}
-                 initial={{ opacity: 0, y: 20 }}
-                 animate={{ opacity: 1, y: 0 }}
-                 exit={{ opacity: 0, y: -20 }}
-                 transition={{ duration: 0.4, ease: "circOut" }}
-                 className="relative"
-               >
-                 <Quote className="w-12 h-12 md:w-20 md:h-20 text-white/20 mb-4 md:mb-8" />
-                 <h3 className="text-2xl md:text-4xl lg:text-5xl font-[Syne] font-medium text-white leading-snug drop-shadow-lg">
-                   "{TESTIMONIALS[currentIndex].text}"
-                 </h3>
-               </motion.div>
-            </AnimatePresence>
-         </div>
+          
+          {/* Quote Section */}
+          <div className="flex-1 flex flex-col justify-center h-full w-full">
+             <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "circOut" }}
+                  className="relative"
+                >
+                  <Quote className="w-12 h-12 md:w-20 md:h-20 text-white/20 mb-4 md:mb-8" />
+                  <h3 className="text-2xl md:text-4xl lg:text-5xl font-[Syne] font-medium text-white leading-snug drop-shadow-lg">
+                    "{TESTIMONIALS[currentIndex].text}"
+                  </h3>
+                </motion.div>
+             </AnimatePresence>
+          </div>
 
-         {/* User Info */}
-         <div className="w-full md:w-auto flex md:flex-col items-center md:items-start gap-4 md:gap-6">
-            <motion.div 
-               key={`info-${currentIndex}`}
-               initial={{ opacity: 0, x: 10 }}
-               animate={{ opacity: 1, x: 0 }}
-               transition={{ duration: 0.4 }}
-               className="flex items-center gap-4 md:block"
-            >
-                <img 
-                    src={TESTIMONIALS[currentIndex].avatar} 
-                    alt={TESTIMONIALS[currentIndex].name} 
-                    className="w-12 h-12 md:w-20 md:h-20 rounded-full border-2 border-white/30 object-cover md:mb-4"
-                />
-                <div>
-                    <div className="text-white font-[Syne] font-bold text-base md:text-xl">
-                        {TESTIMONIALS[currentIndex].name}
-                    </div>
-                    <div className="text-white/60 text-xs md:text-sm uppercase tracking-widest font-mono">
-                        {TESTIMONIALS[currentIndex].role}
-                    </div>
-                </div>
-            </motion.div>
-         </div>
+          {/* User Info */}
+          <div className="w-full md:w-auto flex md:flex-col items-center md:items-start gap-4 md:gap-6">
+             <motion.div 
+                key={`info-${currentIndex}`}
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4 }}
+                className="flex items-center gap-4 md:block"
+             >
+                 <img 
+                     src={TESTIMONIALS[currentIndex].avatar} 
+                     alt={TESTIMONIALS[currentIndex].name} 
+                     className="w-12 h-12 md:w-20 md:h-20 rounded-full border-2 border-white/30 object-cover md:mb-4"
+                 />
+                 <div>
+                     <div className="text-white font-[Syne] font-bold text-base md:text-xl">
+                         {TESTIMONIALS[currentIndex].name}
+                     </div>
+                     <div className="text-white/60 text-xs md:text-sm uppercase tracking-widest font-mono">
+                         {TESTIMONIALS[currentIndex].role}
+                     </div>
+                 </div>
+             </motion.div>
+          </div>
       </div>
 
       {/* "Paused" Indicator */}
@@ -239,9 +213,9 @@ const StoryViewer = () => {
 
       {/* Tap Zones */}
       <div className="absolute inset-0 z-10 flex">
-         <div className="w-[30%] h-full cursor-w-resize" title="Previous" />
-         <div className="w-[40%] h-full cursor-pointer" />
-         <div className="w-[30%] h-full cursor-e-resize" title="Next" />
+          <div className="w-[30%] h-full cursor-w-resize" title="Previous" />
+          <div className="w-[40%] h-full cursor-pointer" />
+          <div className="w-[30%] h-full cursor-e-resize" title="Next" />
       </div>
     </div>
   );
@@ -333,7 +307,7 @@ export const About: React.FC<AboutProps> = ({ onBack }) => {
                     <a href="mailto:hello@lustra.studio" className="flex items-center gap-2 px-8 py-3 bg-black text-white dark:bg-white dark:text-black rounded-full font-bold text-sm uppercase tracking-wide hover:scale-105 transition-transform shadow-lg">
                         <Mail size={18} /> Contact Me
                     </a>
-                    <a href="/resume.pdf" download className="flex items-center gap-2 px-8 py-3 bg-transparent border border-black/20 dark:border-white/20 text-black dark:text-white rounded-full font-bold text-sm uppercase tracking-wide hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                    <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-8 py-3 bg-transparent border border-black/20 dark:border-white/20 text-black dark:text-white rounded-full font-bold text-sm uppercase tracking-wide hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
                         <Download size={18} /> Resume
                     </a>
                 </div>
@@ -355,9 +329,9 @@ export const About: React.FC<AboutProps> = ({ onBack }) => {
                <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-gray-200 dark:bg-white/10 -translate-x-1/2" />
 
                <div className="space-y-12 md:space-y-24">
-                  {EXPERIENCE.map((job, index) => (
+                  {WORK_HISTORY.map((job, index) => (
                      <motion.div 
-                        key={job.id}
+                        key={index}
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
